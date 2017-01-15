@@ -9,7 +9,7 @@ except:
     traceback.print_exc()
     CONFIG = {}
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 LOCAL_DEPLOY = CONFIG.get('local_deploy', True)
 
 AWS_CONFIGS = CONFIG.get('aws', {})
@@ -23,7 +23,7 @@ AWS_SES_REGION_ENDPOINT = 'email.us-west-2.amazonaws.com'
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 if LOCAL_DEPLOY:
     STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'destacame_app/static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     MEDIA_URL = '/media/'

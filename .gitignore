@@ -12,6 +12,8 @@ StalkerShop/static/
 fabfile.py
 temp/
 temp/*
+static/
+static/*
 *~
 temp
 /bower_components/

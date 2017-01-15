@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-15 13:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: main/admin.py:20
+msgid "Link"
+msgstr "Link"
+
+#: main/models.py:32
+msgid "Falabella"
+msgstr ""
+
+#: main/models.py:33
+msgid "Ripley"
+msgstr ""
+
+#: main/models.py:34
+msgid "Paris"
+msgstr ""
+
+#: main/models.py:35
+msgid "Sodimac"
+msgstr ""
+
+#: main/models.py:36
+msgid "Easy"
+msgstr ""
+
+#: main/models.py:37
+msgid "Hites"
+msgstr ""
+
+#: main/models.py:38
+msgid "Abcdin"
+msgstr ""
+
+#: main/models.py:40
+msgid "Name"
+msgstr "Nombre"
+
+#: main/models.py:41
+msgid "URL"
+msgstr ""
+
+#: main/models.py:42
+msgid "SKU"
+msgstr ""
+
+#: main/models.py:43
+msgid "Store"
+msgstr "Tienda"
+
+#: main/models.py:45
+msgid "Price_1"
+msgstr "Precio 1"
+
+#: main/models.py:46
+msgid "Price_2"
+msgstr "Precio 3"
+
+#: main/models.py:47
+msgid "Price_3"
+msgstr "Precio 3"
+
+#: main/models.py:48
+msgid "PublishedDiscount"
+msgstr "Descuento publicado"
+
+#: main/models.py:50
+msgid "RealDiscount"
+msgstr "Descuento real"
+
+#: main/models.py:52
+msgid "ImageURL"
+msgstr "URL Imagen"
+
+#: main/models.py:54
+msgid "Description"
+msgstr "Descripción"
+
+#: main/models.py:55
+msgid "Updated"
+msgstr "Actualizado"
+
+#: main/models.py:56
+msgid "Created"
+msgstr "Creado"
+
+#: main/models.py:60
+msgid "Product"
+msgstr "Producto"
+
+#: main/models.py:61
+msgid "Products"
+msgstr "Productos"

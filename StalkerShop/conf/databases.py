@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import traceback
+import sys
 try:
     import secrets
     CONFIG = secrets.CONFIG

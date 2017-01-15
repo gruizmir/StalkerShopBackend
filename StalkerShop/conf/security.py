@@ -7,6 +7,10 @@ except:
     traceback.print_exc()
     CONFIG = {}
 
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = CONFIG.get('secret_key')
+
 ## SEGURIDAD Y OTRAS HIERBAS
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = ()
