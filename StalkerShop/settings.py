@@ -18,10 +18,10 @@ try:
 except:
     CONFIG = {}
 
-from conf.emailing import *
-from conf.security import *
-from conf.databases import *
-from conf.files import *
+from StalkerShop.conf.emailing import *
+from StalkerShop.conf.security import *
+from StalkerShop.conf.databases import *
+from StalkerShop.conf.files import *
 
 
 pymysql.install_as_MySQLdb()

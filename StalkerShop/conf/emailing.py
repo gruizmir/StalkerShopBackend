@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import traceback
 try:
-    import secrets
+    from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
 except:
     traceback.print_exc()

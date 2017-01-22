@@ -2,7 +2,7 @@
 import traceback
 import sys
 try:
-    import secrets
+    from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
 except:
     traceback.print_exc()
@@ -18,7 +18,7 @@ else:
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': DB_DEFAULT.get('engine', 'django.db.backends.mysql'),
         'NAME': DB_DEFAULT.get('name', ''),
         'USER': DB_DEFAULT.get('user', ''),
         'PASSWORD': DB_DEFAULT.get('password', ''),

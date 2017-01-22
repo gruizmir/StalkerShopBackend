@@ -3,7 +3,7 @@ import traceback
 import os 
 
 try:
-    import secrets
+    from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
 except:
     traceback.print_exc()
