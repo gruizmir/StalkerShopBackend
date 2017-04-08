@@ -41,8 +41,6 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
-    authentication_classes = (BasicAuthentication, TokenAuthentication)
     filter_class = ProductFilter
     filter_backends = (DjangoFilterBackend, )
 
