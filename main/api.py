@@ -1,25 +1,33 @@
 # -*- coding: utf-8 -*-
-import django_filters
 from rest_framework import viewsets
 from main.models import Product
 from main.serializers import ProductSerializer
 from rest_framework.authentication import TokenAuthentication, \
     BasicAuthentication
-from rest_framework.filters import DjangoFilterBackend, OrderingFilter,\
-    SearchFilter, FilterSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-# from rest_framework.decorators import detail_route
-# from rest_framework.renderers import StaticHTMLRenderer
+from django_filters.rest_framework import DjangoFilterBackend, OrderingFilter,\
+    FilterSet, CharFilter
+from django_filters import DateTimeFromToRangeFilter, NumberFilter
 
 
 class ProductFilter(FilterSet):
-    min_price = django_filters.NumberFilter(name="price_3", lookup_expr='gte')
-    max_price = django_filters.NumberFilter(name="price_3", lookup_expr='lte')
-    min_discount = django_filters.NumberFilter(name="real_discount",
+    min_price = NumberFilter(name="price_3", lookup_expr='gte')
+    max_price = NumberFilter(name="price_3", lookup_expr='lte')
+    min_discount = NumberFilter(name="real_discount",
         lookup_expr='gte')
-    max_discount = django_filters.NumberFilter(name="real_discount", 
+    max_discount = NumberFilter(name="real_discount", 
         lookup_expr='lte')
-    created = django_filters.DateTimeFromToRangeFilter()
+    created = DateTimeFromToRangeFilter()
+    name = CharFilter()
+
+    o = OrderingFilter(
+        fields=(
+            ('store', 'store'),
+            ('price_3', 'price_3'),
+            ('real_discount', 'real_discount'),
+            ('updated', 'updated'),
+        ),
+    )
 
     class Meta:
         model = Product
@@ -36,14 +44,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     authentication_classes = (BasicAuthentication, TokenAuthentication)
     filter_class = ProductFilter
-    filter_backends = (DjangoFilterBackend, OrderingFilter, SearchFilter)
-    ordering_fields = ('store', 'price_3', 'real_discount', 'updated')
-    search_fields = ('name', )
-
-    # @detail_route(renderer_classes=[StaticHTMLRenderer])
-    # def highlight(self, request, *args, **kwargs):
-    #     producto = self.get_object()
-    #     return Response(product.highlighted)
+    filter_backends = (DjangoFilterBackend, )
 
     def perform_create(self, serializer):
         serializer.save()

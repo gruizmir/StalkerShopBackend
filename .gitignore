@@ -21,8 +21,8 @@ temp
 /node_modules/
 *.csv
 *.sock
-StalkerShop.sublime-project
-StalkerShop.sublime-workspace
+*.sublime-project
+*.sublime-workspace
 startupAMI.sh
 .idea/
 DbReplicator.sh

@@ -53,6 +53,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 SECURE_SSL_REDIRECT = True
 # https://docs.djangoproject.com/es/1.9/ref/settings/#secure-ssl-redirect
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 
 # TODO: Agregar estas configuraciones
