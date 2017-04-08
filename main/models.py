@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 class Product(models.Model):
@@ -36,6 +37,7 @@ class Product(models.Model):
         ('easy', _('Easy')),
         ('hites', _('Hites')),
         ('abcdin', _('Abcdin')),
+        ('pcfactory', _('PcFactory')),
     )
     name = models.CharField(_('Name'), max_length=200, null=False, blank=False)
     url = models.URLField(_('URL'), max_length=300, null=False, blank=False)
@@ -63,3 +65,22 @@ class Product(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def has_good_discount(self, comparative=None):
+        if comparative:
+            compare_price = min(comparative.get_prices())
+            current_price = min(self.get_prices())
+            self.calc_discount = \
+                100 * (compare_price - current_price) / compare_price
+        else:
+            prices = self.get_prices()
+            min_price = min(prices)
+            max_price = max(prices)
+            self.published_discount = 100 * (max_price - min_price) / max_price
+            self.calc_discount = self.published_discount
+        self.save()
+        return self.calc_discount >= settings.GOOD_DISCOUNT
+
+    def get_prices(self):
+        prices = list(filter(None, [self.price_3, self.price_2, self.price_1]))
+        return prices

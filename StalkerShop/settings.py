@@ -18,10 +18,11 @@ try:
 except:
     CONFIG = {}
 
-from StalkerShop.conf.emailing import *
-from StalkerShop.conf.security import *
+from StalkerShop.conf.calculations import *
 from StalkerShop.conf.databases import *
+from StalkerShop.conf.emailing import *
 from StalkerShop.conf.files import *
+from StalkerShop.conf.security import *
 
 
 pymysql.install_as_MySQLdb()
@@ -51,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'main'
+    'django_filters',
+    'main.apps.MainConfig'
 ]
 
 MIDDLEWARE = [
