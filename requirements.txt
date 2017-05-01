@@ -9,3 +9,4 @@ django-storages==1.5.2
 gunicorn==19.7.1
 PyMySQL==0.7.9
 PyJWT==1.4.2
+pycodestyle==2.3.1

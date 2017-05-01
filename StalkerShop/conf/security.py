@@ -12,36 +12,43 @@ except:
 SECRET_KEY = CONFIG.get('secret_key')
 
 ## SEGURIDAD Y OTRAS HIERBAS
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = ()
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ('http://localhost:8100', 'localhost:8100',)
 CORS_ORIGIN_REGEX_WHITELIST = ()
 CORS_URLS_REGEX = '^.*$'
 CORS_EXPOSE_HEADERS = ()
 CORS_ALLOW_CREDENTIALS = True
 CORS_PREFLIGHT_MAX_AGE = 86400
+CORS_ALLOW_METHODS = (
+    'GET',
+    'OPTIONS',
+    'POST',
+)
+
 
 SESSION_COOKIE_SECURE = CONFIG.get('secure_cookies', False)
 CSRF_COOKIE_SECURE = CONFIG.get('secure_cookies', False)
 CSRF_COOKIE_HTTPONLY = True
 
-SECRET_KEY = CONFIG.get('secret_key', False) 
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+            '.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+            '.MinimumLengthValidator',
         'OPTIONS': {
             'min_length': 8,
         }
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+            '.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+            '.NumericPasswordValidator',
     },
 ]
 
