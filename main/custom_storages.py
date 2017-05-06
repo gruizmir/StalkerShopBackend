@@ -17,8 +17,8 @@ class StaticStorage(S3BotoStorage):
 
 class MediaStorage(S3BotoStorage):
     u"""
-    Archivos de usuario. El atributo 'file_overwrite' en False deja los archivos
-    subidos como no editables por defecto.
+    Archivos de usuario. El atributo 'file_overwrite' en False deja los
+    archivos subidos como no editables por defecto.
     """
     bucket_name = settings.AWS_MEDIA_BUCKET_NAME or None
     custom_domain = settings.AWS_S3_MEDIA_DOMAIN

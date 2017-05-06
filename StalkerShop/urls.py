@@ -1,4 +1,5 @@
-"""StalkerShop URL Configuration
+# -*- coding: utf-8 -*-
+u"""StalkerShop URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -17,7 +18,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from main import urls as main_urls
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
-
 
 
 urlpatterns = [

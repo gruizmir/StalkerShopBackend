@@ -1,13 +1,28 @@
 # -*- coding: utf-8 -*-
+u"""
+Configuración de almacenamiento de archivos estáticos y de archivos subidos por
+usuarios en el proyecto. Los valores que puedan cambiar entre los entornos de
+Desarrollo, QA y Producción están en el archivo secrets.py, así como claves o
+valores sensibles que no se deban subir a GitHub.
+
+:Authors:
+    - Gabriel Ruiz
+
+:Last Modification:
+    - 29.05.2017
+"""
 import traceback
-import os 
+import os
 
 try:
     from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
-except:
+except ImportError:
+    CONFIG = {}
+except Exception:
     traceback.print_exc()
     CONFIG = {}
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 LOCAL_DEPLOY = CONFIG.get('local_deploy', True)

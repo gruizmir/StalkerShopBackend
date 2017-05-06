@@ -10,12 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 import os
-import pymysql 
+import pymysql
+import traceback
 
 try:
     from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
-except:
+except ImportError:
+    CONFIG = {}
+except Exception:
+    traceback.print_exc()
     CONFIG = {}
 
 from StalkerShop.conf.calculations import *
@@ -125,4 +129,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
     'UNICODE_JSON': False,
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }

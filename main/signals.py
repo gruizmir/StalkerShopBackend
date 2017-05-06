@@ -7,7 +7,7 @@ from django.dispatch import receiver
 @receiver(post_save, sender=Product)
 def product_post_save_handler(sender, **kwargs):
     u"""
-    Verifica si el producto existe en la misma tienda y tiene un precio 
+    Verifica si el producto existe en la misma tienda y tiene un precio
     que haya disminuido en más de un 80% respecto al anterior.
     """
     product = kwargs['instance']
@@ -16,13 +16,13 @@ def product_post_save_handler(sender, **kwargs):
         return
 
     if product.has_good_discount():
+        # TODO: Enviar notificacion PUSH
         # send_notification(product)
-        # TODO: Cambiar por logger
-        print("Tiene descuento")
+        pass
     similar_product = Product.objects.filter(sku=product.sku)\
-                                    .exclude(id=product.id).last()
-    print(similar_product.id)
-    if similar_product and product.has_good_discount(comparative=similar_product):
+        .exclude(id=product.id).last()
+    if (similar_product and
+            product.has_good_discount(comparative=similar_product)):
+        # TODO: Enviar notificacion PUSH
         # send_notification(product)
-        # TODO: Cambiar por logger
-        print("Tiene descuento")
+        pass

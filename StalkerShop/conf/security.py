@@ -1,17 +1,29 @@
 # -*- coding: utf-8 -*-
+u"""
+Configuración de seguridad del proyecto. Los valores que puedan cambiar entre
+los entornos de Desarrollo, QA y Producción están en el archivo secrets.py, así
+como claves o valores sensibles que no se deban subir a GitHub.
+
+:Authors:
+    - Gabriel Ruiz
+
+:Last Modification:
+    - 29.05.2017
+"""
 import traceback
 try:
     from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
-except:
+except ImportError:
+    CONFIG = {}
+except Exception:
     traceback.print_exc()
     CONFIG = {}
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = CONFIG.get('secret_key')
 
-## SEGURIDAD Y OTRAS HIERBAS
+# SEGURIDAD Y OTRAS HIERBAS
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ('http://localhost:8100', 'localhost:8100',)
 CORS_ORIGIN_REGEX_WHITELIST = ()
@@ -33,22 +45,22 @@ CSRF_COOKIE_HTTPONLY = True
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation'
-            '.UserAttributeSimilarityValidator',
+                '.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation'
-            '.MinimumLengthValidator',
+                '.MinimumLengthValidator',
         'OPTIONS': {
             'min_length': 8,
         }
     },
     {
         'NAME': 'django.contrib.auth.password_validation'
-            '.CommonPasswordValidator',
+                '.CommonPasswordValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation'
-            '.NumericPasswordValidator',
+                '.NumericPasswordValidator',
     },
 ]
 

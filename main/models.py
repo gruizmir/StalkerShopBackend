@@ -4,6 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+
 class Product(models.Model):
     u"""
     Modelo que representa un producto de una tienda,
@@ -12,7 +13,7 @@ class Product(models.Model):
     Attributes
     ----------
     name : CharField
-        Nombre del producto, según la descripción de la lista de 
+        Nombre del producto, según la descripción de la lista de
         productos de la tienda.
     url : URLField
         URL del detalle del producto.
@@ -23,11 +24,18 @@ class Product(models.Model):
     price_1 : IntegerField
         Precio 'normal' del producto, según lo publica la tienda.
     price_2 : IntegerField
-        Precio 'internet' u 'oferta' del producto, según lo publica la tienda.
+        Precio 'internet' u 'oferta' del producto, según lo publica
+        la tienda.
     price_3 : IntegerField
-        Precio 'con tarjeta X' del producto, según lo publica la tienda. Puede 
-        corresponder al mismo valor de price_2, si no existe oferta con tarjeta.
+        Precio 'con tarjeta X' del producto, según lo publicado en la
+        tienda. Puede corresponder al mismo valor de price_2, si no
+        existe oferta con tarjeta.
 
+    :Authors:
+        - Gabriel Ruiz
+
+    :Last Modification:
+        - 06.05.2017
     """
     STORE_OPTIONS = (
         ('falabella', _('Falabella')),
@@ -45,17 +53,17 @@ class Product(models.Model):
     store = models.CharField(_('Store'), max_length=200, choices=STORE_OPTIONS,
         null=False, blank=False)
     price_1 = models.IntegerField(_('Price_1'), null=False, blank=False)
-    price_2 = models.IntegerField(_('Price_2'), null=False, blank=False)
+    price_2 = models.IntegerField(_('Price_2'), null=True, blank=True)
     price_3 = models.IntegerField(_('Price_3'), null=False, blank=False)
-    published_discount = models.IntegerField(_('PublishedDiscount'), 
+    published_discount = models.IntegerField(_('PublishedDiscount'),
         null=True, blank=True)
-    calc_discount = models.IntegerField(_('RealDiscount'), 
+    calc_discount = models.IntegerField(_('RealDiscount'),
         null=True, blank=True)
-    image_url = models.URLField(_('ImageURL'), max_length=300, null=False, 
-        blank=False)
+    image_url = models.URLField(_('ImageURL'), max_length=300, null=True,
+        blank=True)
     description = models.TextField(_('Description'), null=True, blank=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True)
-    created = models.DateTimeField(_('Created'), auto_now_add=True, 
+    created = models.DateTimeField(_('Created'), auto_now_add=True,
         editable=False)
 
     class Meta:
@@ -67,6 +75,30 @@ class Product(models.Model):
         return self.name
 
     def has_good_discount(self, comparative=None):
+        u"""
+        Calcula el porcentaje de descuento de este producto y lo guarda
+        en la base de datos. Evalúa si el descuento es bueno (es decir,
+        mayor o igual que el valor de 'GOOD_DISCOUNT' en settings).
+
+        Parameters
+        ----------
+        comparative : main.models.Product
+            Otro producto contra el que se quiere evaluar el descuento.
+            Idealmente, debe ser el mismo producto en otro momento o
+            en otra tienda.
+
+        Returns
+        -------
+        bool
+            True si el descuento es mayor que settings.GOOD_DISCOUNT,
+            False en caso contrario.
+
+        :Authors:
+            - Gabriel Ruiz
+
+        :Last Modification:
+            - 29.04.2017
+        """
         if comparative:
             compare_price = min(comparative.get_prices())
             current_price = min(self.get_prices())
