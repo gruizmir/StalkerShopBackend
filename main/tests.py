@@ -46,7 +46,7 @@ class ProductsTests(APITestCase):
         data = {
             'name': 'MOTO G 4TA',
             'url': 'http://www.falabella.com/falabella-cl/product/5155721/'
-                'LED-55-UN55KU6000-4K-Ultra-HD-Smart-TV?sid=HO_V5_LED_0031436',
+                   'LED-55-UN55KU6000-4K-Ultra-HD-Smart-TV',
             'price_1': 209990,
             'price_2': 179990,
             'price_3': 109990,

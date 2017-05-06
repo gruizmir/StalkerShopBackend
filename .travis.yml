@@ -16,8 +16,8 @@ install:
   - pip install pep8
   - pip install pyflakes
 before_script:
-  - pep8 --exclude=migrations main
-  - pep8 --exclude=migrations StalkerShop
+  - pep8 --exclude=migrations main --ignore=E128,E127
+  - pep8 --exclude=migrations StalkerShop --ignore=E128,E127
   - flakes main
   - flakes StalkerShop
   # - mysql -u root -p'destacame' -e 'create database test_stalkershop;'
