@@ -10,16 +10,16 @@ Casos de Test para probar la API de StalkerShop.
 """
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.test.client import encode_multipart
 from main.models import Product
 from rest_framework import status
 from rest_framework.test import APITestCase
+
 
 # TODO: Test post con token correcto
 # TODO: Test get con sesion corecta
 # TODO: Test get con token correcto
 # TODO: Test get fallido
-# TODO: Test de obtencion de JWT
-# TODO: Test de renovacion de JWT
 
 
 class ProductsTests(APITestCase):
@@ -30,6 +30,7 @@ class ProductsTests(APITestCase):
         """
         user = User.objects.create(username='testuser', is_active=True)
         user.set_password('testpassword')
+        user.save()
         Product.objects.create(name="Samsung Smart TV",
             url="https://mitienda.com",
             price_1=300000,
@@ -53,9 +54,9 @@ class ProductsTests(APITestCase):
             'store': 'ripley',
             'sku': '2000358595041P'
         }
-        user = User.objects.get(username='testuser')
-        self.client.force_authenticate(user=user)
+        self.client.login(username='testuser', password='testpassword')
         response = self.client.post(url, data, format='json')
+        self.client.logout()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Product.objects.count(), 2)
         self.assertEqual(Product.objects.last().name, 'MOTO G 4TA')
@@ -78,3 +79,41 @@ class ProductsTests(APITestCase):
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertEqual(Product.objects.count(), 1)
+
+
+class AuthenticationTests(APITestCase):
+
+    def setUp(self):
+        u"""
+        Crea un usuario y un producto para iniciar el test.
+        """
+        user = User.objects.create(username='testuser', is_active=True)
+        user.set_password('testpassword')
+        user.save()
+
+    def test_get_jwt(self):
+        u"""
+        Verifica que un usuario pueda obtener un JWT desde el sistema.
+        """
+        url = reverse('obtain_jwt_token')
+        data = {'username': 'testuser', 'password': 'testpassword'}
+        content = encode_multipart('BoUnDaRyStRiNg', data)
+        content_type = 'multipart/form-data; boundary=BoUnDaRyStRiNg'
+        response = self.client.post(url, content, content_type=content_type)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_refresh_jwt(self):
+        u"""
+        Verifica que un usuario pueda renovar el JWT en el sistema.
+        """
+        url = reverse('obtain_jwt_token')
+        data = {'username': 'testuser', 'password': 'testpassword'}
+        content = encode_multipart('BoUnDaRyStRiNg', data)
+        content_type = 'multipart/form-data; boundary=BoUnDaRyStRiNg'
+        response = self.client.post(url, content, content_type=content_type)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        url = reverse('refresh_jwt_token')
+        jwt = response.data['token']
+        data = {'token': jwt}
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

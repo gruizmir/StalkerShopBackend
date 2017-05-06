@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import pymysql
 import traceback
+from datetime import timedelta
 
 try:
     from StalkerShop.conf import secrets
@@ -130,4 +131,9 @@ REST_FRAMEWORK = {
     ),
     'UNICODE_JSON': False,
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': timedelta(hours=1),
+    'JWT_ALLOW_REFRESH': True,
 }
