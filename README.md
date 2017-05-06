@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/gruizmir/StalkerShopBackend.svg?branch=master)](https://travis-ci.org/gruizmir/StalkerShopBackend.svg?branch=master)
+
+
+
 [![Coverage Status](https://coveralls.io/repos/github/gruizmir/StalkerShopBackend/badge.svg?branch=master)](https://coveralls.io/github/gruizmir/StalkerShopBackend?branch=master)
 
 # Intro
