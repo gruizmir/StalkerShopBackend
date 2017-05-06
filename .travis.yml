@@ -1,26 +1,20 @@
 language: python
 python:
-  - "2.7"
   - "3.4"
   - "3.5"
   - "3.6"
-  - "3.7-dev" # 3.7 development branch
+  # - "3.7-dev" # 3.7 development branch
 # Django versions to run tests
 env:
-  - DJANGO_VERSION=1.10.1
-  - DJANGO_VERSION=1.10.2
-  - DJANGO_VERSION=1.10.3
-  - DJANGO_VERSION=1.10.4
-  - DJANGO_VERSION=1.10.5
   - DJANGO_VERSION=1.10.6
   - DJANGO_VERSION=1.10.7
   - DJANGO_VERSION=1.11
 # command to install dependencies
 install: 
-  - pip3 install -r requirements.txt
-  - pip3 install -q Django==$DJANGO_VERSION --use-mirrors
-  - pip3 install pep8
-  - pip3 install pyflakes
+  - pip install -r requirements.txt
+  - pip install -q Django==$DJANGO_VERSION --use-mirrors
+  - pip install pep8
+  - pip install pyflakes
 before_script:
   - pep8 --exclude=migrations main
   - pep8 --exclude=migrations StalkerShop
