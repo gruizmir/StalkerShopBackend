@@ -28,3 +28,4 @@ startupAMI.sh
 DbReplicator.sh
 /.vscode/settings.json
 StalkerShop/cert/*.pem
+stalker.db

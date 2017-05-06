@@ -21,7 +21,8 @@ except Exception:
     CONFIG = {}
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG.get('secret_key')
+SECRET_KEY = CONFIG.get('secret_key',
+    'ba8)rw3n!fro(qsi0p_(*(g%m5q+a3!q4l5(!)((#j$m823+e8')
 
 # SEGURIDAD Y OTRAS HIERBAS
 CORS_ORIGIN_ALLOW_ALL = False

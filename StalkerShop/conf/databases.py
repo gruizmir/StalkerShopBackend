@@ -29,8 +29,8 @@ DB_DEFAULT = DB_CONFIG.get('default', {})
 # La configuracion por defecto es para testing
 DATABASES = {
     'default': {
-        'ENGINE': DB_DEFAULT.get('engine', 'django.db.backends.sqlite'),
-        'NAME': DB_DEFAULT.get('name', 'stalker'),
+        'ENGINE': DB_DEFAULT.get('engine', 'django.db.backends.sqlite3'),
+        'NAME': DB_DEFAULT.get('name', 'stalker.db'),
         'USER': DB_DEFAULT.get('user', ''),
         'PASSWORD': DB_DEFAULT.get('password', ''),
         'HOST': DB_DEFAULT.get('host', ''),
