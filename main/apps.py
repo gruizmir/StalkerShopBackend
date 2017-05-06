@@ -8,3 +8,5 @@ class MainConfig(AppConfig):
 
     def ready(self):
         import main.signals
+        # TODO: Cambiar a Log
+        print('Loaded {}'.format(main.signals))
