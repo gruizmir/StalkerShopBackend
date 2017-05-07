@@ -85,3 +85,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 # https://docs.djangoproject.com/es/1.9/ref/settings/#fixture-dirs
 
 # TODO: Revisar X-Content-Type-Options: nosniff en AWS S3
+
+# Este valor se debe borrar de las variables de entorno en
+# Elastic Beanstalk después de su primera ejecución.
+SUPERUSER_PASSWORD = CONFIG.get('SUPERUSER_PASSWORD', '')
