@@ -29,10 +29,14 @@ script:
   - python manage.py test
 deploy:
   provider: elasticbeanstalk
-  access_key_id: "AKIAIWGSBV7J5WPX764Q"
+  app: StalkerShop
+  env: ProductionEnv
+  bucket_name: elasticbeanstalk-us-west-2-906307946871
+  access_key_id:
+    secure: "BSnOTViR+w+kiEYGroDe8vj3H86KCh1Eee87pUyaXNvhF3KSNZ8WKkszByAyWvcnQlalcFGeNmF+u4ChL5a/CBnW5KRZ47Pph7wHgbpr+Zyadd6iz8dNUIG491mQ+Gv5Ac+Gqco/V/EGXX7ufmngqSEgld2Perl0vtTgmj8BCAww8ZG3tBHMJBGaVaceCJflPChRB1f+nIAG5Mj5JeIqfdCipl4BwBKLCZ/D0wFqSMkYo+ttz4SzuRB6eTxQoPoyYITLEvwekppOfvVo/ItubYXX7iNt3nGbMydEpg0t/jvp7jtqlAtlIBLeDPx+jJwwkJfg7eFPth3VcEek8Xg9TMl6XBc4pSS7Wp/ZkVbkVuwz/AjBzbYQ5AvqKPL++RIFNA3BKFpUZdKL1nU9YPJuQBdJuqfccUqxfbc10FOytMUOxA+wYXgDeUf+0VUL580D7J+V+00eLFU2thGkT0meaJB/BcD7sJU+Z3EZqgpgaGLK7jIrjW8Riqg5dF6pW2esgLKHp48agmx6fMd1ZHXLoNTAlqa8IbjSbrC/drkklixZLRbt5QULVN1rJ1SPor8cY7IaXpokeyCvBYdEK7GGOngVh1joYJCWV00ot6VgbixqzKF/VXDIq7uko8B8y1IR6wL170Z074/GSgGrT+eN5cX52kWJICd8STWyoqfhEW0="
   secret_access_key:
     secure: "NVvi6jvqyINC+Cut/IZSVWbHiY+mYzT+jQn9ZqHl69Vq6AoFO4NgQCM3CIk9TakaxEsCl6W3AqloYFHEgVS7+dZEsW8KHp0bn+nkrrXxWpvML9BiV0g2r2ImV9y/85Jb7ptRtadTXF/PpCcFWfdJWFUgfN58NWNEUtOXgkKbH6z00viSRhx4NEQhRWnSlR56doyadeDWrUREAoZGiot6tIor1S8MUHGvBl4z6fxIZfMIs5Ty5KBdZ2TRQ62vc41/tv1nzuJYTV5EBp0KALMbsUxyL/EPdKyPxBr+19egHxjqHrwADEmp63E7ix5uFfeByChmaxs7sXszdxZ71E1Gc2J2q+rDqL6dQnS2nsHUqfwLR2FavP9A8bKI9PORUWb6JEEtfYDE0x7HuCA30PGAhIXlIO0YzUU47xtRExrGmuDW8otsvqR6iMFQyt0RRFfKpvT0s/is9WQz/CoEAZtFrW1n5BjVcW3p6L4LAGnOEZtFznER59xd6iGCGa+PNBAGEHHH+hNE2BS2tamhLDjwCNCL5qJ5hJiwQ+2RXuoDIdNyBxolafY4KHWQ0W0LS/f3o71wZIFdK6eQEynDYVSRAelVYC4hKf36jq5a2yUjyVUzZ0mLv0UoULtfnorhkFsyqYjPX6J33BM+y/wLDNvQQcTbyx8+x1kt/4VpJvbuLaU="
-  region: "us-west-2"
-  app: "StalkerShop"
-  env: "ProductionEnv"
-  bucket_name: "elasticbeanstalk-us-west-2-906307946871"
+  region: us-west-2
+  on:
+    repo: StalkerShopBackend
+    branch: dev
