@@ -35,10 +35,11 @@ deploy:
   region: us-west-2
   app: StalkerShop
   env: ProductionEnv
+  bucket_name: "elasticbeanstalk-us-west-2-906307946871"
   on:
     repo: gruizmir/StalkerShopBackend
     branch: dev
-  
+
 # deploy:
 #   provider: elasticbeanstalk
 #   app: StalkerShop
