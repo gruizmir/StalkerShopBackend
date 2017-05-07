@@ -29,3 +29,8 @@ DbReplicator.sh
 /.vscode/settings.json
 StalkerShop/cert/*.pem
 stalker.db
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

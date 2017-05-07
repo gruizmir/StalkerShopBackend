@@ -10,18 +10,20 @@ como claves o valores sensibles que no se deban subir a GitHub.
 :Last Modification:
     - 29.05.2017
 """
+import os
 import traceback
+
 try:
     from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
 except ImportError:
-    CONFIG = {}
+    CONFIG = os.environ
 except Exception:
     traceback.print_exc()
     CONFIG = {}
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG.get('secret_key',
+SECRET_KEY = CONFIG.get('SECRET_KEY',
     'ba8)rw3n!fro(qsi0p_(*(g%m5q+a3!q4l5(!)((#j$m823+e8')
 
 # SEGURIDAD Y OTRAS HIERBAS
@@ -39,8 +41,8 @@ CORS_ALLOW_METHODS = (
 )
 
 
-SESSION_COOKIE_SECURE = CONFIG.get('secure_cookies', False)
-CSRF_COOKIE_SECURE = CONFIG.get('secure_cookies', False)
+SESSION_COOKIE_SECURE = CONFIG.get('SECURE_COOKIES', False)
+CSRF_COOKIE_SECURE = CONFIG.get('SECURE_COOKIES', False)
 CSRF_COOKIE_HTTPONLY = True
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -75,12 +77,10 @@ SECURE_SSL_REDIRECT = True
 # https://docs.djangoproject.com/es/1.9/ref/settings/#secure-ssl-redirect
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
-
-# TODO: Agregar estas configuraciones
-
-# DISALLOWED_USER_AGENTS = []
+DISALLOWED_USER_AGENTS = ['python-requests']
 # https://docs.djangoproject.com/es/1.9/ref/settings/#disallowed-user-agents
 
+# TODO: Agregar estas configuraciones
 # FIXTURE_DIRS
 # https://docs.djangoproject.com/es/1.9/ref/settings/#fixture-dirs
 

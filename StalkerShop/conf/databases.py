@@ -9,32 +9,32 @@ GitHub.
     - Gabriel Ruiz
 
 :Last Modification:
-    - 06.05.2017
+    - 07.05.2017
 """
+import os
 import traceback
+
 try:
     from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
 except ImportError:
-    CONFIG = {}
+    CONFIG = os.environ
 except Exception:
     traceback.print_exc()
     CONFIG = {}
 
 # Databases
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-DB_CONFIG = CONFIG.get('databases', {})
-DB_DEFAULT = DB_CONFIG.get('default', {})
 
 # La configuracion por defecto es para testing
 DATABASES = {
     'default': {
-        'ENGINE': DB_DEFAULT.get('engine', 'django.db.backends.sqlite3'),
-        'NAME': DB_DEFAULT.get('name', 'stalker.db'),
-        'USER': DB_DEFAULT.get('user', ''),
-        'PASSWORD': DB_DEFAULT.get('password', ''),
-        'HOST': DB_DEFAULT.get('host', ''),
-        'PORT': DB_DEFAULT.get('port', '3306'),
+        'ENGINE': CONFIG.get('RDS_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': CONFIG.get('RDS_DB_NAME', 'stalker.db'),
+        'USER': CONFIG.get('RDS_USERNAME', ''),
+        'PASSWORD': CONFIG.get('RDS_PASSWORD', ''),
+        'HOST': CONFIG.get('RDS_HOSTNAME', ''),
+        'PORT': CONFIG.get('RDS_PORT', '3306'),
         'TEST': {
             'NAME': 'test_stalkershop',
             'USER': 'testuser',

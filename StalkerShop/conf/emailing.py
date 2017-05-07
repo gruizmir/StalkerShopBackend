@@ -8,27 +8,27 @@ secrets.py, así como claves o valores sensibles que no se deban subir a GitHub.
     - Gabriel Ruiz
 
 :Last Modification:
-    - 29.05.2017
+    - 07.05.2017
 """
+import os
 import traceback
+
 try:
     from StalkerShop.conf import secrets
     CONFIG = secrets.CONFIG
 except ImportError:
-    CONFIG = {}
+    CONFIG = os.environ
 except Exception:
     traceback.print_exc()
     CONFIG = {}
 
-EMAIL_CONFIGS = CONFIG.get('email', {}).get('smtp', {})
-EMAIL_USE_TLS = EMAIL_CONFIGS.get('use_tls', True)
-EMAIL_HOST = EMAIL_CONFIGS.get('host', '')
-EMAIL_HOST_USER = EMAIL_CONFIGS.get('user', '')
-EMAIL_HOST_PASSWORD = EMAIL_CONFIGS.get('password', '')
-EMAIL_PORT = EMAIL_CONFIGS.get('port', 587)
-EMAIL_PROVIDERS = CONFIG.get('email', {}).get('providers', {})
-DEFAULT_FROM_EMAIL = u''
-DEFAULT_FROM_NAME = u''
-CONTACT_EMAIL = ''
+EMAIL_USE_TLS = CONFIG.get('EMAIL_USE_TLS', True)
+EMAIL_HOST = CONFIG.get('EMAIL_HOST', '')
+EMAIL_HOST_USER = CONFIG.get('EMAIL_USER', '')
+EMAIL_HOST_PASSWORD = CONFIG.get('EMAIL_PASSWORD', '')
+EMAIL_PORT = CONFIG.get('EMAIL_PORT', 587)
 
-EMAIL_SUBJECT_PREFIX = u'[DESTACAME]'
+DEFAULT_FROM_EMAIL = CONFIG.get('EMAIL_DEFAULT_FROM', '')
+DEFAULT_FROM_NAME = CONFIG.get('EMAIL_DEFAULT_NAME', '')
+EMAIL_SUBJECT_PREFIX = u'[StalkerShop]'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
