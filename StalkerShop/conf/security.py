@@ -77,7 +77,7 @@ SECURE_SSL_REDIRECT = True
 # https://docs.djangoproject.com/es/1.9/ref/settings/#secure-ssl-redirect
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
-DISALLOWED_USER_AGENTS = ['python-requests']
+# DISALLOWED_USER_AGENTS = ['python-requests']
 # https://docs.djangoproject.com/es/1.9/ref/settings/#disallowed-user-agents
 
 # TODO: Agregar estas configuraciones
