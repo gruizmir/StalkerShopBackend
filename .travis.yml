@@ -38,5 +38,5 @@ deploy:
     secure: "NVvi6jvqyINC+Cut/IZSVWbHiY+mYzT+jQn9ZqHl69Vq6AoFO4NgQCM3CIk9TakaxEsCl6W3AqloYFHEgVS7+dZEsW8KHp0bn+nkrrXxWpvML9BiV0g2r2ImV9y/85Jb7ptRtadTXF/PpCcFWfdJWFUgfN58NWNEUtOXgkKbH6z00viSRhx4NEQhRWnSlR56doyadeDWrUREAoZGiot6tIor1S8MUHGvBl4z6fxIZfMIs5Ty5KBdZ2TRQ62vc41/tv1nzuJYTV5EBp0KALMbsUxyL/EPdKyPxBr+19egHxjqHrwADEmp63E7ix5uFfeByChmaxs7sXszdxZ71E1Gc2J2q+rDqL6dQnS2nsHUqfwLR2FavP9A8bKI9PORUWb6JEEtfYDE0x7HuCA30PGAhIXlIO0YzUU47xtRExrGmuDW8otsvqR6iMFQyt0RRFfKpvT0s/is9WQz/CoEAZtFrW1n5BjVcW3p6L4LAGnOEZtFznER59xd6iGCGa+PNBAGEHHH+hNE2BS2tamhLDjwCNCL5qJ5hJiwQ+2RXuoDIdNyBxolafY4KHWQ0W0LS/f3o71wZIFdK6eQEynDYVSRAelVYC4hKf36jq5a2yUjyVUzZ0mLv0UoULtfnorhkFsyqYjPX6J33BM+y/wLDNvQQcTbyx8+x1kt/4VpJvbuLaU="
   region: us-west-2
   on:
-    repo: StalkerShopBackend
+    repo: gruizmir/StalkerShopBackend
     branch: dev
