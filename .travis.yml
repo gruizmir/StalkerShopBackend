@@ -31,8 +31,8 @@ deploy:
   secret_access_key:
     secure: fVkJh3qGlHVojY2IjJthOvCEjj6BaxaEydPSaZy71cmKyHm0MIHvDakE4GPOJRlsnLzSmPmAOuK8/8JDCJzK0BQq4G6Sn0bMrGlSWL1ytQCYkQVqKQMMa/2hW4joMjFpzflU6s8e0b43kmxHsJPl+CUJSVUveyGGeLO/iaidT+C2SLibbTLoH64hG+EgB+zIk3LqePp/vHxGapOy9sv1fVCrpTPQBCJX5JrRUVdt9eZGh7JqkB5yGlucc7RYjLA1H6p1tM8IeW4d7be/tFyupD5nUGW9LyAi3Z4JsQi2QAIXF8gbjgugLi5ETJe9WxzrsF3zlLg6i8OMnDullwJkfwPFvdGWcTH15nVupTLPmcHlUosv9gD53XtMMlSC+fVbCiNxZdwocq06ysSPZy7fXnjQwuW0OHAcmfWSzkCG8IAwwGFfT5GY8CIuL9zYM6/hMqW5+lYEeT/ees+c0505jpxYaE36Bly4yWG/nWmWphz1yyMzovh3a7O5OKrrxZqeDoZtWtaFsYhn2N6B7WGxxI7p8bjg5sjj5gpgP9BISL3LpmnVcWVGwtzFWrob34/f3oddyeZLO++ebdp/n/2M67GQ1g1wG5KcrlB8ukbvy8Bbu5uT2PkY2VhxU5+O90FTgyTnTO5CCy2d42qayKNhjvr0rVkCyJmkl91CnT7PYhM=
   region: us-west-2
-  app: StalkerShop
-  env: ProductionEnv
+  app: StalkerShopBackend
+  env: StalkerShopBackend-dev
   bucket_name: "elasticbeanstalk-us-west-2-906307946871"
   on:
     repo: gruizmir/StalkerShopBackend

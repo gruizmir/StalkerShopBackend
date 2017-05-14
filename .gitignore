@@ -34,3 +34,6 @@ stalker.db
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+backend/.elasticbeanstalk/*
+!backend/.elasticbeanstalk/*.cfg.yml
+!backend/.elasticbeanstalk/*.global.yml
