@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 u"""
 Django settings for StalkerShop project.
@@ -51,6 +50,7 @@ ADMINS = (
 DEBUG = CONFIG.get('DEBUG', True)
 ALLOWED_HOSTS = CONFIG.get('ALLOWED_HOSTS', '').split('|')
 
+IN_DOCKER = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/

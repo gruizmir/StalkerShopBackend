@@ -13,20 +13,17 @@ env:
   # - DJANGO_VERSION=1.10.7
   - DJANGO_VERSION=1.11
 # command to install dependencies
-install: 
+install:
   - pip install -r requirements.txt
   - pip install -q Django==$DJANGO_VERSION
   - pip install pep8
   - pip install pyflakes
 before_script:
-  - pep8 --exclude=migrations main --ignore=E128,E127
-  - pep8 --exclude=migrations StalkerShop --ignore=E128,E127
-  - pyflakes main
-  # - pyflakes StalkerShop
-  # - mysql -u root -p'destacame' -e 'create database test_stalkershop;'
-# command to run tests
-script: 
-  - python manage.py test
+  - pep8 --exclude=migrations backend/main --ignore=E128,E127
+  - pep8 --exclude=migrations backend/StalkerShop --ignore=E128,E127
+  - pyflakes backend/main
+script:
+  - python backend/manage.py test
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIWGSBV7J5WPX764Q
@@ -39,17 +36,3 @@ deploy:
   on:
     repo: gruizmir/StalkerShopBackend
     branch: dev
-
-# deploy:
-#   provider: elasticbeanstalk
-#   app: StalkerShop
-#   env: ProductionEnv
-#   bucket_name: "elasticbeanstalk-us-west-2-906307946871"
-#   region: us-west-2
-#   access_key_id:
-#     secure: "gBFo+UFm62444PPXiKJWwVsvtTwGiJwhcD3lxFeuP4Ozsu/eAdhQUecUD12QKBhd41Rc4LN/GY0v1FH6125fN57nCfp/5WI5EbIX9fVHWnvXOqmqsz4e/g7bRonQYGYTEfxwVWxs1YqfYVgKgph8wQMN8JUTwAB7TilRRNfurEUYxJfiHB0ytHgzCTP6I+IG91dZRzCwegxqgptWdseK1n7o+OIK52EZURopf7jPFBojVkcow7KkDafWA3uo3/LtRF8+jOxSJWhbyjM75PbYmjlsTawJZuh/kiuJnbSH+1tPUS9m2ys7w5TEKcmn2c/BvQQVhZrA3MBO2+/iP/Hj6e0F8LQZ1XQ56zXHZjz94h8YXrbVRDNgtXCTVm5/xykom3fvpGwH1BHkUbPoHJgnaeOLxjsXqL+t+ybjtk1z5N3qLuArIo1d+Imk4AHXKUQjQZYSMJ1SXLfkpYAesBNx/ZoPjZHurFdo5jqNFHaGTs3A+TnwM5PTzZeY2V8X82suTP96Ip3kprCmKjFnAo9rGCdrYBJZ5pxrGci1q3PjfYn6Kvubor4+GyBU/AJygLd/Z4m+zjW01/lqLsHMMLARMFUogYqSZ/BivMq47GkxFzM3h/htVHjMGMyJwFgxSca4PTWaxtr7rf0HlRonHLz5jzkYLH/u4CzvFZOwKrLgqIE="
-#   secret_access_key:
-#     secure: "NVvi6jvqyINC+Cut/IZSVWbHiY+mYzT+jQn9ZqHl69Vq6AoFO4NgQCM3CIk9TakaxEsCl6W3AqloYFHEgVS7+dZEsW8KHp0bn+nkrrXxWpvML9BiV0g2r2ImV9y/85Jb7ptRtadTXF/PpCcFWfdJWFUgfN58NWNEUtOXgkKbH6z00viSRhx4NEQhRWnSlR56doyadeDWrUREAoZGiot6tIor1S8MUHGvBl4z6fxIZfMIs5Ty5KBdZ2TRQ62vc41/tv1nzuJYTV5EBp0KALMbsUxyL/EPdKyPxBr+19egHxjqHrwADEmp63E7ix5uFfeByChmaxs7sXszdxZ71E1Gc2J2q+rDqL6dQnS2nsHUqfwLR2FavP9A8bKI9PORUWb6JEEtfYDE0x7HuCA30PGAhIXlIO0YzUU47xtRExrGmuDW8otsvqR6iMFQyt0RRFfKpvT0s/is9WQz/CoEAZtFrW1n5BjVcW3p6L4LAGnOEZtFznER59xd6iGCGa+PNBAGEHHH+hNE2BS2tamhLDjwCNCL5qJ5hJiwQ+2RXuoDIdNyBxolafY4KHWQ0W0LS/f3o71wZIFdK6eQEynDYVSRAelVYC4hKf36jq5a2yUjyVUzZ0mLv0UoULtfnorhkFsyqYjPX6J33BM+y/wLDNvQQcTbyx8+x1kt/4VpJvbuLaU="
-#   on:
-#     repo: gruizmir/StalkerShopBackend
-#     branch: dev
