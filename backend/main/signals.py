@@ -18,7 +18,8 @@ def product_post_save_handler(sender, **kwargs):
     if product.has_good_discount():
         # TODO: Enviar notificacion PUSH
         # send_notification(product)
-        pass
+        print("good discount")
+        # pass
     similar_product = Product.objects.filter(sku=product.sku)\
         .exclude(id=product.id).last()
     if (similar_product and
