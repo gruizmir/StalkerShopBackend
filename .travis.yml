@@ -20,11 +20,11 @@ install:
   - pip install pep8
   - pip install pyflakes
 before_script:
-  - pep8 --exclude=migrations backend/main --ignore=E128,E127
-  - pep8 --exclude=migrations backend/StalkerShop --ignore=E128,E127
-  - pyflakes backend/main
+  - pep8 --exclude=migrations main --ignore=E128,E127
+  - pep8 --exclude=migrations StalkerShop --ignore=E128,E127
+  - pyflakes main
 script:
-  - python backend/manage.py test'
+  - python manage.py test'
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIWGSBV7J5WPX764Q
