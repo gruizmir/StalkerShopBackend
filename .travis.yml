@@ -14,6 +14,7 @@ env:
   - DJANGO_VERSION=1.11
 # command to install dependencies
 install:
+  - cd backend
   - pip install -r requirements.txt
   - pip install -q Django==$DJANGO_VERSION
   - pip install pep8
@@ -23,7 +24,7 @@ before_script:
   - pep8 --exclude=migrations backend/StalkerShop --ignore=E128,E127
   - pyflakes backend/main
 script:
-  - python backend/manage.py test
+  - python backend/manage.py test'
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIWGSBV7J5WPX764Q
