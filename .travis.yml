@@ -24,7 +24,7 @@ before_script:
   - pep8 --exclude=migrations StalkerShop --ignore=E128,E127
   - pyflakes main
 script:
-  - python manage.py test'
+  - python manage.py test
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIWGSBV7J5WPX764Q
